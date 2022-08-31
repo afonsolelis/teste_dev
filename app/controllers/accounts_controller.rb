@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   before_action :set_account, only: %i[ show edit update destroy ]
 
   def index
-    @accounts = Account.where(status: "active")
+    @accounts = Account.where(user: current_user, status: "active")
   end
 
   def show
@@ -14,7 +14,7 @@ class AccountsController < ApplicationController
   end
 
   def create
-    @account = Account.new(account_params)
+    @account = Account.new(user: current_user, balance: 0, status: "active")
 
     respond_to do |format|
       if @account.save

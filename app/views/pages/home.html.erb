@@ -1,2 +1,13 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<p style="color: green"><%= notice %></p>
+
+
+
+<div class="container">
+  <% if current_user%>
+    <%= link_to "Criar nova conta", new_account_path %>
+    <%= link_to "Minhas Contas", accounts_path %>
+    <%= link_to "Enviar montante", new_transaction_path %>
+  <% else %>
+    Olá! Faća seu cadastro para visualizar
+  <% end %>
+</div>
